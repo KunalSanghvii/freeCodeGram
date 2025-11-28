@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*YqfVlyCe06DfcPsR3kpYrw.jpeg" style="height: 200px" class="rounded-circle">
+            <img src="{{ $user->profile->profileImage() }}" style="height: 200px" class="rounded-circle w-100">
 
         </div>
         <div class="col-9">

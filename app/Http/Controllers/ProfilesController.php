@@ -33,8 +33,6 @@ class ProfilesController extends Controller
         'image' => '',
        ]);
 
-
-
        if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
 
@@ -46,12 +44,16 @@ class ProfilesController extends Controller
                                  ->resizeCanvas(1000, 1000, 'center', false, 'ffffff');
             $image->save();
 
+            $imageArray = ['image' => $imagePath];
        }
-        auth()->$user->profile->update($array_merge(
-            $data,
-            ['image' => $imagePath]);
-        return redirect("/profile/{$user->id}");
 
+    
+       auth()->user()->profile->update(array_merge(
+        $data,
+        $imageArray ?? []
+       ));
+
+       return redirect("/profile/{$user->id}");
 
     }
 }
